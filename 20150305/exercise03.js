@@ -4,20 +4,25 @@ http.createServer(function (req, res) {
   res.end('Hello World\n');
 }).listen(1337, '127.0.0.1');
 console.log('Server running at http://127.0.0.1:1337/');
-console.log("esercizio 1");
+console.log("esercizio 3\n");
 var i = 1;
 var j = 1;
 var x = 0;
 while (i<=10){
 	while (j<=10){
-	x=x+i;
- 	console.log(x);
+	if(i==j)
+	 x=1;
+	else
+	 x=0;
+	if (j<10)
+ 	console.log(x + ',');
+	else
+	console.log(x);
 	j++;
 	}	
 	console.log('\n');
 	i++;
 	j=1;
-	x=0;
 } 
 
 
