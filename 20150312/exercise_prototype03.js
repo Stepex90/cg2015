@@ -7,18 +7,18 @@
   // write your code here to make the program work 
   
   function Summer(){
-    
     this.number=0;
-    
-    Summer.prototype.getCurrentSum = function(){      
-      return this.number;
-    };
-    
-    Summer.prototype.add = function(number){
-      this.number+=number;
-    };
-  
   };
+    
+  Summer.prototype.getCurrentSum = function(){      
+      return this.number;
+  };
+    
+  Summer.prototype.add = function(number){
+      this.number+=number;
+  };
+  
+  
 
   var s1 = new Summer();
   var s2 = new Summer();

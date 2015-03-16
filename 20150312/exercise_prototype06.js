@@ -1,24 +1,41 @@
 //implement a MusicBox object that should make the following code work well:
 
 (function() {
-// Write your code here  
+
+// Write your code here
+
+/*    Questo per aggirare l'ostacolo del costruttore senza new
+      function MusicBox(){
+          if(!(this instanceof MusicBox)){
+          return new MusicBox;
+        }
+
+      }
+*/
+ 
   function MusicBox(){
     
-    var album=new Album();
+    var albums= new Array();
+  
+  };
       MusicBox.prototype.addAlbum=function(album){
-        this.album=album;
+        var k=0;
+        albums[k++]=album;
       };
 
- /*    MusicBox.prototype.favoriteAlbum=function(){
-        console.log("dentro favoriteAlbum ");
-        for (var album in box){
-        if (album.favorite === 1)
-          console.log("dentro if");
-          return album.artista+album.titolo;
-        }
+      MusicBox.prototype.favoriteAlbum=function(){
+        var index=0;
+          for(var i=0;i<albums.length;i++)
+          {
+            if(albums[i].favorite>albums[i+1].favorite)
+              index=i;
+            else
+              index=i+1;
+          }
+          return index;
       };
-*/
-  };
+
+  
 
   function Album(artista , titolo){
       
@@ -26,9 +43,10 @@
       this.titolo=titolo;
       this.favorite=0;
       
-        Album.prototype.play = function(){
+      Album.prototype.play = function(){
+        this.favorite++;
         console.log("Playing artista: " + this.artista + " - song: " + this.titolo + " - favorite: "+ this.favorite);
-    };
+      };
 
   } ;
     
@@ -46,13 +64,11 @@
   a1.play() ; // prints "Playing The Who - Tommy"
   a2.play(); // prints "Playing Tom Waits - Closing Time"  
   a1.play(); // prints "Playing The Who - Tommy"
-
-  console.log("set del preferito");
-  a1.favorite=1; //set del favorite album
-  a1.play() ;
+  a3.play();
 
   //favorite = box.favoriteAlbum(); 
 
   // prints "favorite album is The Who - Tommy"
   //console.log("favorite album is " + favorite); 
+
 }());

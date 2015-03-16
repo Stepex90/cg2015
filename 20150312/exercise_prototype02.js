@@ -20,9 +20,9 @@
 
 
   // write code here
-  var music = [{play: 1, index: 3, played:2},
-               {play: 2, index: 2, played:3},
-               {play: 3, index: 1, played:1}];
+  var music = [{play: 1, index: 1, played:1},
+               {play: 2, index: 2, played:2},
+               {play: 3, index: 3, played:3}];
 
   var fav = favorite_album( music );
 
