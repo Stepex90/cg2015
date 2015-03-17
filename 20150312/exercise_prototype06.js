@@ -13,42 +13,53 @@
       }
 */
  
-  function MusicBox(){
+  	function MusicBox(){
+  	};
+
+  	MusicBox.prototype.albums = new Array();
+  	MusicBox.prototype.k = 0;
+
+	MusicBox.prototype.addAlbum = function(album){
     
-    var albums= new Array();
-  
-  };
-      MusicBox.prototype.addAlbum=function(album){
-        var k=0;
-        albums[k++]=album;
-      };
+        //console.log("k: "+this.k);
+        //console.log("addAlbum: "+ album.titolo + album.artista);
+        this.albums[this.k] = album;
+        //console.log("addAlbum: "+ this.albums[this.k].titolo + this.albums[this.k].artista);
+        this.k++;
+    };
 
-      MusicBox.prototype.favoriteAlbum=function(){
-        var index=0;
-          for(var i=0;i<albums.length;i++)
+    MusicBox.prototype.favoriteAlbum = function(){
+        var index = 0;
+        //	console.log("length "+this.k);
+          for(var i=0, j=i+1;i<this.k;i++)
           {
-            if(albums[i].favorite>albums[i+1].favorite)
+         // 	console.log("prima if: " + this.albums[i].favorite +" "+this.albums[j].favorite)
+            if(this.albums[i].favorite>this.albums[j].favorite)
               index=i;
-            else
-              index=i+1;
+           
+         // 	console.log("index: "+index);
           }
-          return index;
-      };
+        return this.albums[index];
+    };
 
   
 
-  function Album(artista , titolo){
+    function Album(artista , titolo){
       
       this.artista=artista;
       this.titolo=titolo;
       this.favorite=0;
-      
-      Album.prototype.play = function(){
+    
+    } ;
+
+    Album.prototype.play = function(){
+   
         this.favorite++;
         console.log("Playing artista: " + this.artista + " - song: " + this.titolo + " - favorite: "+ this.favorite);
-      };
+   
+    };
 
-  } ;
+  	
     
 
   var box = new MusicBox();
@@ -66,9 +77,9 @@
   a1.play(); // prints "Playing The Who - Tommy"
   a3.play();
 
-  //favorite = box.favoriteAlbum(); 
+  favorite = box.favoriteAlbum(); 
 
   // prints "favorite album is The Who - Tommy"
-  //console.log("favorite album is " + favorite); 
+  console.log("favorite album is: " + favorite.titolo); 
 
 }());
